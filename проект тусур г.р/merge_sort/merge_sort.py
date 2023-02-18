@@ -1,19 +1,24 @@
 def merge_sort(n):
-    from merge_sort.merge import merge
-    mid=len(n)//2
+    from merge_sort.merge import merge # импорт мерджа 
+    mid=len(n)//2 # деление на две примерно равные части
     n1=n[:mid]
     n2=n[mid:]
-    if len(n1)>1:
+    if len(n1)>1:# если длинна массива равна 1 => он отсортирован, перестаем входит в рекурсию 
         n1=merge_sort(n1)
     if len(n2)>1:
         n2=merge_sort(n2)
-    return merge(n1,n2) 
+    return merge(n1,n2) # объединение отсорт. массивов
     
 
 
 
-if __name__=="__main__":
+if __name__=="__main__": # тесты
     n=[1,3,4,4,4,1]
     n=merge_sort(n)
     print(n)
 
+"""сложность алгоритма n*log2(n)
+сложность состоит из двух частей:
+1. рекурсия, глубина которой k. из равенства 2^k=n получим:k=log2(n)
+2. мердж. так как нет вложенных циклов сложность линейна и равна n
+"""
